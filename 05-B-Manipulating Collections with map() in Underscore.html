@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Manipulating Collections with map() Underscore</title>
+    <script type="text/javascript" src="lib/underscore.js"></script>
+    <script type="text/javascript" src="data/data.js"></script>
+    <script type="text/javascript">
+    function listGrades(finalGrades) {
+        _.each(finalGrades, function(elem, indx, list) {
+            var container = document.getElementById("container");
+            container.innerHTML = container.innerHTML + elem;
+        });
+    }
+
+    function assignGrades(item) {
+        var grade = (item.midterm_score + item.final_score) / 2;
+        var letterGrade;
+
+        if (grade <= 64)
+            letterGrade = "F";
+        else if (grade > 64 && grade <= 69)
+            letterGrade = "D";
+        else if (grade >= 70 && grade <= 79)
+            letterGrade = "C";
+        else if (grade >= 80 && grade <= 89)
+            letterGrade = "B";
+        else if (grade >= 90)
+            letterGrade = "A";
+
+        return "<p>" + item.firstname + " " + item.lastname + ": " + letterGrade + "</p>";
+    }
+
+    window.addEventListener("load", function(e) {
+        // The shuffle() function randomizes the contents of the list
+        // using an algorithm called the Fisher-Yates shuffle
+        students = _.shuffle(students);
+        // console.table(students);
+        // the map() function creates a new array based upon each item in the list
+        // Let's assign letter grades to each one of the students:
+        var finalGrades = _.map(students, assignGrades);
+        console.log(finalGrades);
+        listGrades(finalGrades);
+    });
+    </script>
+</head>
+
+<body>
+    <h1>Manipulating Collections with map() Underscore</h1>
+    <p>
+        <ol>
+            <li>The shuffle() function randomizes the contents of the list </li>
+            <li>using an algorithm called the Fisher-Yates shuffle</li>
+            <li>the map() function creates a new array based upon each item in the list</li>
+            <li>Let's assign letter grades to each one of the students:</li>
+        </ol>
+    </p>
+    <h2>Student Information</h2>
+    <h3 id="numstudents">Number of students :   </h3>
+    <div id="container"></div>
+</body>
+
+</html>

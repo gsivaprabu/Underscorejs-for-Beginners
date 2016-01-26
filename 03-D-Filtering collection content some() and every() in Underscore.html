@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Filtering collection content with every() and some() in Underscore</title>
+    <script type="text/javascript" src="lib/underscore.js"></script>
+    <script type="text/javascript" src="data/data.js"></script>
+    <script type="text/javascript">
+    // check to see if a student did better on their final than on their midterm
+    function checkImprovement(item) {
+        var result = item.final_score > item.midterm_score;
+        if (result == false) {
+            console.warn(item.final_score + item.midterm_score + '=> ' + result);
+
+        } else {
+            console.log(item.final_score + item.midterm_score + '=> ' + result);
+        };
+        return item.final_score > item.midterm_score;
+    }
+    window.addEventListener("load", function() {
+
+        // use the every() function to ensure that all of a set of criteria have been met
+        alert(_.every(students, checkImprovement));
+
+        // use the some() function to see if any elements pass the criteria
+        alert(_.some(students, checkImprovement));
+    });
+    </script>
+</head>
+
+<body>
+    <h1>Filtering collection content with every() and some() in Underscore</h1>
+    <p>check to see if a student did better on their final than on their midterm
+        <br> use the every() function to ensure that all of a set of criteria have been met
+        <br> use the some() function to see if any elements pass the criteria
+        <br>
+    </p>
+    <div id="container"></div>
+</body>
+
+</html>

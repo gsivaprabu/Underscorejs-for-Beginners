@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Extracting Array Data with first() and last() in Underscore</title>
+    <script type="text/javascript" src="lib/underscore.js"></script>
+    <script type="text/javascript" src="data/data.js"></script>
+    <script type="text/javascript">
+    window.addEventListener("load", function(e) {
+        var midscore = _.pluck(students, "midterm_score");
+        console.table("_.pluck() value => " + midscore);
+        var ascSortedValue = midscore.sort(); // Core JavaScript functionality
+        console.log(ascSortedValue);
+        var descSortValue = ascSortedValue.reverse(); // Core JavaScript functionality
+        console.log(descSortValue);
+        console.log(descSortValue.length);
+        var container = document.getElementById('container');
+
+        var len = _.initial(ascSortedValue, 3).length;
+        console.log(len);
+        console.log(_.initial(ascSortedValue, 3));
+        console.log(_.rest(ascSortedValue, 3));
+
+        var data = "<p> Initial score minus the last 3 => " + _.initial(ascSortedValue, 3) + "</p>";
+        data += "<p> Rest of the scores, minus the first 3 => " + _.rest(ascSortedValue, 3) +
+            "</p>";
+        container.innerHTML = container.innerHTML + data;
+    });
+    </script>
+</head>
+
+<body>
+    <h1>Extracting Array Data with initial() and rest() in Underscore</h1>
+    <p>
+        <ol>
+            <li>pluck() begin by plucking the midterm scores data from the students list</li>
+            <li>use the initial() and rest() functions to extract array data</li>
+        </ol>
+    </p>
+    <h2>Student Information</h2>
+    <h3 id="numstudents">Number of students :   </h3>
+    <div id="container"></div>
+</body>
+
+</html>

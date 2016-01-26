@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Filtering collection content with filter() in Underscore</title>
+    <script type="text/javascript" src="lib/underscore.js"></script>
+    <script type="text/javascript" src="data/data.js"></script>
+    <script type="text/javascript">
+    function getPassingStudents(elem) {
+        return ((elem.midterm_score + elem.final_score) / 2 > 65);
+    }
+    window.addEventListener("load", function() {
+        // use the filter() function to narrow down the list
+        var result = _.filter(students, getPassingStudents)
+        console.log(result);
+        // now use each() to populate the list
+        _.each(result, function(elem, indx, list) {
+            var container = document.getElementById("container");
+            var student = "<p>" + elem.firstname + " " + elem.lastname + ", Grade => " + elem.grade;
+            container.innerHTML = container.innerHTML + student;
+        });
+    });
+    </script>
+</head>
+
+<body>
+    <h1>Filtering collection content with filter() in Underscore</h1>
+    <p>use the filter() function to narrow down the list
+        <br> now use each() to populate the list</p>
+    <div id="container"></div>
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Filtering collection content with where() in Underscore</title>
+    <script type="text/javascript" src="lib/underscore.js"></script>
+    <script type="text/javascript" src="data/data.js"></script>
+    <script type="text/javascript">
+    window.addEventListener("load", function() {
+        // use the where() function to select items
+        var result = _.where(students, {
+            "school": "Thoreau",
+            "grade": 10
+        });
+        console.log(result);
+        // now use each() to populate the list
+        _.each(result, function(elem, indx, list) {
+            var container = document.getElementById("container");
+            var student = "<p>" + elem.firstname + " " + elem.lastname + ", Grade => " + elem.grade;
+            container.innerHTML = container.innerHTML + student;
+        });
+    });
+    </script>
+</head>
+
+<body>
+    <h1>Filtering collection content with where() in Underscore</h1>
+    <p>use the where() function to select items
+        <br> now use each() to populate the list</p>
+    <div id="container"></div>
+</body>
+
+</html>

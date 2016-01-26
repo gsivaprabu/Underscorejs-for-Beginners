@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>undesrscorejs isEmpty()</title>
+    <script type="text/javascript" src="lib/underscore.js"></script>
+    <script type="text/javascript" src="data/data.js"></script>
+    <script type="text/javascript">
+    var testTheLogic = _.isEmpty({});
+    console.log(testTheLogic);
+    var a = "Test";
+    var testTheLogic = _.isEmpty({
+        a
+    });
+
+    console.log(testTheLogic);
+
+    var flatten = _.flatten([
+        [0, 1],
+        [2, 3],
+        [4, 5]
+    ]);
+    console.log(flatten);
+
+    var range = _.range(5, 20);
+    console.log(range);
+
+    /*var templates = _.template('<p><%= text %></p>', {
+        text: 'SitePoint Rocks!'
+    });
+    console.log(templates);*/
+
+
+    /*var artists = ['Pharrel Williams', 'Led Zeppelin', 'Rolling Stones'];
+
+    for (var i = 0; i < artists.length; i++) {
+        console.log('artist: ' + artists[i]);
+    }*/
+    </script>
+    <script>
+    function dynamic() {
+
+        var artists = ['Pharrel Williams', 'Led Zeppelin', 'Rolling Stones'];
+
+        _.each(artists, function(artist, index, artists) {
+            var el = document.createElement('p');
+            console.log(el);
+            el.innerHTML = artist;
+            console.log(artist);
+            document.body.appendChild(el);
+        });
+    }
+    </script>
+</head>
+
+<body>
+    <h1>undesrscorejs isEmpty()</h1>
+    <script type="text/javascript">
+    dynamic();
+    </script>
+</body>
+
+</html>

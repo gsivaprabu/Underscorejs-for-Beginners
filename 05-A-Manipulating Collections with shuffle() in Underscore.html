@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Manipulating Collections with shuffle() Underscore</title>
+    <script type="text/javascript" src="lib/underscore.js"></script>
+    <script type="text/javascript" src="data/data.js"></script>
+    <script type="text/javascript">
+    function getStudentInfo(elem, indx, list) {
+        var container = document.getElementById("container");
+        var student = "<p>" + elem.firstname + " " + elem.lastname + ", Grade: " + elem.grade + "</p>";
+        container.innerHTML = container.innerHTML + student;
+    }
+
+    window.addEventListener("load", function(e) {
+        // The shuffle() function randomizes the contents of the list
+        // using an algorithm called the Fisher-Yates shuffle
+        students = _.shuffle(students)
+        _.each(students, getStudentInfo);
+
+    });
+    </script>
+</head>
+
+<body>
+    <h1>Manipulating Collections with shuffle() Underscore</h1>
+    <p>
+        <ol>
+            <li>using _.shuffle() </li>
+            <li>The shuffle() function randomizes the contents of the list</li>
+            <li>using an algorithm called the Fisher-Yates shuffle</li>
+        </ol>
+    </p>
+    <input type="button" onClick="window.location.reload();"  value="Shuffle the datas">
+    <h2>Student Information</h2>
+    <h3 id="numstudents">Number of students :   </h3>
+    <div id="container"></div>
+</body>
+
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Extracting Array Data with first() and last() in Underscore</title>
+    <script type="text/javascript" src="lib/underscore.js"></script>
+    <script type="text/javascript" src="data/data.js"></script>
+    <script type="text/javascript">
+    window.addEventListener("load", function(e) {
+        var midscore = _.pluck(students, "midterm_score");
+        console.table("_.pluck() value => " + midscore);
+        var ascSortedValue = midscore.sort(); // Core JavaScript functionality
+        console.log(ascSortedValue);
+        var descSortValue = ascSortedValue.reverse(); // Core JavaScript functionality
+        console.log(descSortValue);
+        var container = document.getElementById('container');
+        var data = "<p> First score is " + _.first(ascSortedValue) + "<p>";
+        data += "<p> Last scor is " + _.last(ascSortedValue) + "<p>";
+        container.innerHTML = container.innerHTML + data;
+    });
+    </script>
+</head>
+
+<body>
+    <h1>Extracting Array Data with first() and last() in Underscore</h1>
+    <p>
+        <ol>
+            <li>pluck() begin by plucking the midterm scores data from the students list</li>
+            <li>use the first() and last() functions to extract array data</li>
+        </ol>
+    </p>
+    <h2>Student Information</h2>
+    <h3 id="numstudents">Number of students :   </h3>
+    <div id="container"></div>
+</body>
+
+</html>

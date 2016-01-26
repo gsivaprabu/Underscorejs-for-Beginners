@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Iterating Collections with size() and each() Underscore</title>
+    <script type="text/javascript" src="lib/underscore.js"></script>
+    <script type="text/javascript" src="data/data.js"></script>
+    <script type="text/javascript">
+    function getStudentInfo(elem, indx, list) {
+        console.log("elem => " + elem);
+        console.log("indx => " + indx);
+        console.log("list => " + list);
+
+        var container = document.getElementById("container");
+
+        var student = "<p>" + elem.firstname + " " + elem.lastname + ", Grade: " + elem.grade + "</p>";
+        container.innerHTML = container.innerHTML + student;
+    }
+
+    window.addEventListener("load", function() {
+        console.log(students);
+        numStudentElem = document.getElementById("numstudents");
+        console.warn(numStudentElem);
+        console.log(numStudentElem.innerHTML);
+        /* use the "size" property to get number of elements */
+        numStudentElem.innerHTML = numStudentElem.innerHTML + _.size(students);
+
+        /* use the each() function to iterate over every element */
+        _.each(students, getStudentInfo);
+
+    });
+    </script>
+</head>
+
+<body>
+    <h1>Iterating Collections with size() and each() Underscore</h1>
+    <p>each() and size()</p>
+    <h2>Student Information:</h2>
+    <h3 id="numstudents">Number of Students: </h3>
+    <div id="container">
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Array Operations with Underscore in Underscore</title>
+    <script type="text/javascript" src="lib/underscore.js"></script>
+    <script type="text/javascript" src="data/data.js"></script>
+    <script type="text/javascript">
+    window.addEventListener("load", function(e) {
+        var container = document.getElementById("container");
+        var array1 = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+        var array2 = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"];
+        var array3 = [2, 4, 6, 8, 10, 12, 14];
+
+        // Use without() to remove unwanted values from the array
+        var result = "<p>without(): " + _.without(array1, 0, 2, 3) + "</p>";
+        container.innerHTML = container.innerHTML + result;
+        result = "<p>" + _.without(array2, "A", "E", "I", "O", "U") + "</p>";
+        container.innerHTML = container.innerHTML + result;
+
+        // Use the union() function to join two arrays together
+        result = "<p>union(): " + _.union(array1, array2) + "</p>";
+        container.innerHTML = container.innerHTML + result;
+
+        // Use the intersection() function to see what's common to both
+        result = "<p>intersection(): " + _.intersection(array1, array3) + "</p>";
+        container.innerHTML = container.innerHTML + result;
+
+        // The difference() function shows values not present in other array
+        result = "<p>difference(): " + _.difference(array1, array3) + "</p>";
+        container.innerHTML = container.innerHTML + result;
+    });
+    </script>
+</head>
+
+<body>
+    <h1>Array Operations with Underscore in Underscore</h1>
+    <p>
+        <ol>
+            <li>Use without() to remove unwanted values from the array</li>
+            <li>Use the union() function to join two arrays together</li>
+            <li>Use the intersection() function to see what's common to both</li>
+            <li>The difference() function shows values not present in other array</li>
+        </ol>
+    </p>
+    <h2>Student Information</h2>
+    <h3 id="numstudents">Number of students :   </h3>
+    <div id="container"></div>
+</body>
+
+</html>

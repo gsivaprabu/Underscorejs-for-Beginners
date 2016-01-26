@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Searching collections with find in Underscore</title>
+    <script type="text/javascript" src="lib/underscore.js"></script>
+    <script type="text/javascript" src="data/data.js"></script>
+    <script type="text/javascript">
+    function searchStudents(item) {
+        // return true if the student goes to Franklin
+        if (item.school == "Franklin") {
+            return true;
+        };
+    }
+    window.addEventListener("load", function() {
+        var elem = _.find(students, searchStudents);
+
+        var container = document.getElementById('container');
+        var student = "<p>" + elem.firstname + " " + elem.lastname + ', Grade => ' + elem.grade + "</p>";
+        container.innerHTML = container.innerHTML + student
+    });
+    </script>
+</head>
+
+<body>
+    <h1>Searching collections</h1>
+    <p>Test the find() function
+        <br>find the first student that goes to Franklin</p>
+    <h2>Student Information:</h2>
+    <h3 id="numstudents">Number of Students: </h3>
+    <div id="container">
+    </div>
+</body>
+
+</html>

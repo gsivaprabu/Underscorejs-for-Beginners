@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Sorting, Grouping, Counting Collections with countBy() & for() loop in Underscore</title>
+    <script type="text/javascript" src="lib/underscore.js"></script>
+    <script type="text/javascript" src="data/data.js"></script>
+    <script type="text/javascript">
+    function getStudentInfo(elem, indx, list) {
+        var container = document.getElementById('container');
+        var student = "<p>" + elem.firstname + " " + elem.lastname + ", Grade " + elem.grade;
+        container.innerHTML = container.innerHTML + student;
+    }
+
+    function countStudentsByGrade(item) {
+        if (item.grade == 9)
+            return "freshmen";
+        else if (item.grade == 10)
+            return "sophomores";
+        else if (item.grade == 11)
+            return "juniors";
+        else return "seniors";
+    }
+
+    window.addEventListener("load", function(e) {
+        /* Counting the number of students in each grade */
+        var counts = _.countBy(students, countStudentsByGrade);
+        for (i in counts) {
+            var container = document.getElementById("container");
+            var groups = "<p style='font-weight:bold'>" + i + ": " + counts[i] + "</p>";
+            container.innerHTML = container.innerHTML + groups;
+        }
+
+
+    });
+    </script>
+</head>
+
+<body>
+    <h1>Sorting, Grouping, Counting Collections with countBy() & for() loop in Underscore</h1>
+    <p>
+        <ol>
+            <li>using _.countBy </li>
+            <li>using for() loop </li>
+        </ol>
+    </p>
+    <h2>Student Information</h2>
+    <h3 id="numstudents">Number of students :   </h3>
+    <div id="container"></div>
+</body>
+
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Functions with once() , throttle() , bind() in underscorejs</title>
+    <script type="text/javascript" src="lib/underscore.js"></script>
+    <script type="text/javascript" src="data/data.js"></script>
+    <script type="text/javascript">
+    function log(value) {
+        var container = document.getElementById("container");
+        var data = "<p>" + value + "</p>";
+        container.innerHTML = container.innerHTML + data;
+    }
+
+    var doInitialize = function() {
+        log("Initialize function! Don't call me more than once!");
+    }
+    window.addEventListener("load", function(e) {
+        // create a function that can't be called more than one time
+        log("Initialize the app multiple times:")
+        var initfunc = _.once(doInitialize);
+        //var initfunc = doInitialize;
+        initfunc();
+        initfunc();
+        initfunc();
+
+
+        // the throttle() function can be used to limit the number of
+        // times that a function is executed when called repeatedly
+        function updateCharCount() {
+            var elem = document.querySelector("#text1");
+            console.log(elem.value);
+            document.querySelector("#charcount").textContent = (elem.value).length
+            console.log((elem.value).length);
+        }
+        updater = _.throttle(updateCharCount, 4000);
+        document.querySelector("#text1").addEventListener("keydown", updater);
+
+        // the bind() function binds a function to a given object, which becomes the
+        // value of the "this" keyword inside the function.
+        var myObj = {
+            firstname: "Siva",
+            lastname: "Prabu"
+        }
+
+        function dumpData1() {
+            log(this.firstname + " " + this.lastname);
+        }
+
+        function dumpData2() {
+            log(this.lastname + ", " + this.firstname);
+        }
+
+        var func = _.bind(dumpData1, myObj);
+        func();
+        func = _.bind(dumpData2, myObj);
+        func();
+    });
+    </script>
+</head>
+
+<body>
+    <h1>Functions with once() , throttle() , bind() in underscorejs</h1>
+    <p>
+        <ol>
+            <li>once() - create a function that can't be called more than one time</li>
+            <li>throttle() - function can be used to limit the number of times that a function is executed when called repeatedly</li>
+            <li>bind() - function binds a function to a given object, which becomes the value of the "this" keyword inside the function.</li>
+        </ol>
+    </p>
+    <div id="container"></div>
+    <h3>Testing throttle(): </h3>
+    <textarea id="text1" cols="30" rows="10"></textarea>
+    <p id="charcount"></p>
+</body>
+
+</html>

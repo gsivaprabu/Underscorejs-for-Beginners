@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Searching Collections with findWhere in Underscore</title>
+    <script type="text/javascript" src="lib/underscore.js"></script>
+    <script type="text/javascript" src="data/data.js"></script>
+    <script type="text/javascript">
+    window.addEventListener("load", function() {
+
+        // contains() searches a list of values for a value
+        // pluck() retrieves the values for a given property name
+
+        var grades = _.pluck(students, "final_score");
+        console.log(grades);
+        // did anyone get a perfect final?
+        if (_.contains(grades, 100))
+            var cont = _.contains(grades, 100)
+        console.log("Contains => " + cont);
+        alert("Found a perfect final score!");
+    });
+    </script>
+</head>
+
+<body>
+    <h1>Searching Collections with pluck() and contains() in Underscore</h1>
+    <p>contains() searches a list of values for a value
+        <br> pluck() retrieves the values for a given property name</p>
+</body>
+
+</html>
